@@ -5,8 +5,6 @@
  * certain threshold. The default value of the threshold is 800, but it can be
  * changed in the source code if you really need to.
  */
- 
- /*Hello world, Marco is learning how to work with Arduino and SmartGit/Hb*/
 
 static int SENSOR_PIN = A0;      // sensor pin number
 static int LED_PIN = 13;         // LED pin number
