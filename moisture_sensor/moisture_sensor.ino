@@ -6,6 +6,8 @@
  * changed in the source code if you really need to.
  */
 
+/*Hello world*/
+
 static int SENSOR_PIN = A0;      // sensor pin number
 static int LED_PIN = 13;         // LED pin number
 static int threshold = 800;      // threshold for activating the LED
