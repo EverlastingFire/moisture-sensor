@@ -15,10 +15,17 @@ static int threshold = 800;      // threshold for activating the LED
 int reading;                     // analog sensor reading
 int led_state;                   // current led state
 
+static char message[]="Feed me!";         //message to print on the monitor
+static char message2[]="You can change the threshold. The current value is: ";
+
+static long interval=300000; //interval of 5 minutes in milliseconds
+
 void setup()
 {
   // set the digital pin as output
-  pinMode(LED_PIN, OUTPUT);
+    pinMode(LED_PIN, OUTPUT);
+    
+    Serial.begin(9600); //Start sending and receiving serial data
 }
 
 void loop()
@@ -26,6 +33,13 @@ void loop()
   // get the sensor reading and the current LED state
   reading = analogRead(SENSOR_PIN);
   led_state = digitalRead(LED_PIN);
+  while (reading<=threshold){ //until the recorder value is below 800
+    digitalWrite(LED_PIN, HIGH); //Turn on the LED
+    Serial.println(message); //Print the message to the monitor
+    delay(interval); //Wait for 5 minutes
+    digitalWrite(LED_PIN, LOW); //Turn off the LED
+    reading = analogRead(SENSOR_PIN); //Get the sensor reading another time
+  }
   
-  /* TODO */
+  /* TODO: allow the user changing the threshold value*/
 }
