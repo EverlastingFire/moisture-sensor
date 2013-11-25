@@ -6,8 +6,6 @@
  * changed in the source code if you really need to.
  */
 
-/*Hello world*/
-
 static int SENSOR_PIN = A0;      // sensor pin number
 static int LED_PIN = 13;         // LED pin number
 static int threshold = 800;      // threshold for activating the LED
@@ -22,9 +20,7 @@ static long interval=300000; //interval of 5 minutes in milliseconds
 
 void setup()
 {
-  // set the digital pin as output
-    pinMode(LED_PIN, OUTPUT);
-    
+    pinMode(LED_PIN, OUTPUT);   // set the digital pin as output
     Serial.begin(9600); //Start sending and receiving serial data
 }
 
@@ -33,7 +29,8 @@ void loop()
   // get the sensor reading and the current LED state
   reading = analogRead(SENSOR_PIN);
   led_state = digitalRead(LED_PIN);
-  while (reading<=threshold){ //until the recorder value is below 800
+  
+  while (reading<=threshold){ //until the recorded value is below 800
     digitalWrite(LED_PIN, HIGH); //Turn on the LED
     Serial.println(message); //Print the message to the monitor
     delay(interval); //Wait for 5 minutes
