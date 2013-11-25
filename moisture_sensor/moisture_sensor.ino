@@ -6,37 +6,38 @@
  * changed in the source code if you really need to.
  */
 
-static int SENSOR_PIN = A0;      // sensor pin number
-static int LED_PIN = 13;         // LED pin number
-static int threshold = 800;      // threshold for activating the LED
+static int SENSOR_PIN = A0;           // sensor pin number
+static int LED_PIN = 13;              // LED pin number
+static int threshold = 800;           // threshold for activating the LED
 
-int reading;                     // analog sensor reading
-int led_state;                   // current led state
+int reading;                          // analog sensor reading
+int led_state;                        // current led state
 
-static char message[]="Feed me!";         //message to print on the monitor
+static char message[]="Feed me!";     // message to print on the monitor
 /*static char message2[]="You can change the threshold. The current value is: ";*/
 
-static long interval=300000; //interval of 5 minutes in milliseconds
+static long interval=300000;          // interval of 5 minutes in milliseconds
 
 void setup()
 {
-    pinMode(LED_PIN, OUTPUT);   // set the digital pin as output
-    Serial.begin(9600); //Start sending and receiving serial data
+    pinMode(LED_PIN, OUTPUT);         // set the digital pin as output
+    Serial.begin(9600);               // start sending and receiving serial data
 }
 
 void loop()
 {
-  // get the sensor reading and the current LED state
-  reading = analogRead(SENSOR_PIN);
-  led_state = digitalRead(LED_PIN);
   
-  while (reading<=threshold){ //until the recorded value is below 800
-    digitalWrite(LED_PIN, HIGH); //Turn on the LED
-    Serial.println(message); //Print the message to the monitor
-    delay(interval); //Wait for 5 minutes
-    digitalWrite(LED_PIN, LOW); //Turn off the LED
-    reading = analogRead(SENSOR_PIN); //Get the sensor reading another time
+  reading = analogRead(SENSOR_PIN);   // get the sensor reading 
+  led_state = digitalRead(LED_PIN);   // get the current LED state
+  
+  while (reading<=threshold){         // until the recorded value is below 800
+    digitalWrite(LED_PIN, HIGH);      // turn on the LED
+    Serial.println(message);          // print the message to the monitor
+    delay(interval);                  // wait for 5 minutes
+    digitalWrite(LED_PIN, LOW);       // turn off the LED
+    reading = analogRead(SENSOR_PIN); // get the sensor reading another time
   }
   
   /* TODO: allow the user changing the threshold value*/
+  
 }
