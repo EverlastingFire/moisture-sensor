@@ -11,18 +11,19 @@ static int SENSOR_PIN = A0;           // sensor pin number
 static int LED_PIN = 13;              // LED pin number
 static int threshold = 800;           // threshold for activating the LED
 
-int reading;                          // analog sensor reading
-int led_state;                        // current led state
+static long SPEED=9600;               // speed of serial data's transmission
+static long interval=300000;          // interval of 5 minutes in milliseconds
 
 static char message[]="Feed me!";     // message to print on the monitor
 /*static char message2[]="You can change the threshold. The current value is: ";*/
 
-static long interval=300000;          // interval of 5 minutes in milliseconds
+int reading;                          // analog sensor reading
+int led_state;                        // current led state
 
 void setup()
 {
     pinMode(LED_PIN, OUTPUT);         // set the digital pin as output
-    Serial.begin(9600);               // start sending and receiving serial data
+    Serial.begin(SPEED);              // start sending and receiving serial data
 }
 
 void loop()
