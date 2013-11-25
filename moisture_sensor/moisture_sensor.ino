@@ -14,7 +14,7 @@ int reading;                     // analog sensor reading
 int led_state;                   // current led state
 
 static char message[]="Feed me!";         //message to print on the monitor
-static char message2[]="You can change the threshold. The current value is: ";
+/*static char message2[]="You can change the threshold. The current value is: ";*/
 
 static long interval=300000; //interval of 5 minutes in milliseconds
 
