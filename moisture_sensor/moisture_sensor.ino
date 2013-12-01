@@ -9,17 +9,20 @@
 
 static int SENSOR_PIN = A0;           // sensor pin number
 static int LED_PIN = 13;              // LED pin number
-static int threshold = 800;           // threshold for activating the LED
+
 
 static long SPEED=9600;               // speed of serial data's transmission
 static long interval_1m=60000;        // interval of 1 minute in milliseconds
 static long interval_30m=1800000;     // interval of 30 minutes in milliseconds
 
-static char message[]="Feed me!";     // message to print on the monitor
-/*static char message2[]="You can change the threshold. The current value is: ";*/
+static char message[]="Feed me!";     // messages to print on the monitor
+static char message2[]="Do you want to change the threshold value? 1=Yes, 0=No";
+static char message3[]="Enter the new threshold value: ";
 
 int reading;                          // analog sensor reading
 int led_state;                        // current led state
+int threshold = 800;                  // threshold for activating the LED
+int answer=0;
 
 void setup()
 {
@@ -67,8 +70,11 @@ void loop()
   else{                               // if the plant soil is moist wait a bit
     digitalWrite(LED_PIN, LOW);       // turn off the LED
     delay(interval_30m);              // wait 30 minutes
-  }
-  
-  /* TODO: allow the user changing the threshold value*/
-  
+    Serial.println(message2);         // ask if user wants another threshold
+    scanf("%i", &answer);             // enter the answer
+    if (answer==1){                   // if yes
+      Serial.println(message3);       // ask the new value
+      scanf("%i", &threshold);        // enter new value
+    }
+  }  
 }
