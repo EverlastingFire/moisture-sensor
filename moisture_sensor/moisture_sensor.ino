@@ -32,15 +32,15 @@ void setup()
 
 void ledSOS(){
   int i = 0;
-  for (i=0; i<3; i++){            // letter S, made by 3 dots
-    digitalWrite(LED_PIN, HIGH);   // turns on the LED
-    delay(250);                   // wait
-    digitalWrite(LED_PIN, LOW);    // turns off the LED
+  for (i=0; i<3; i++){                // letter S, made by 3 dots
+    digitalWrite(LED_PIN, HIGH);      // turns on the LED
+    delay(250);                       // wait
+    digitalWrite(LED_PIN, LOW);       // turns off the LED
     delay(250);
   }
   delay(1500);
   i = 0;
-  for (i=0; i<3; i++){            // letter O, made by 3 dashes
+  for (i=0; i<3; i++){                // letter O, made by 3 dashes
     digitalWrite(LED_PIN, HIGH); 
     delay(900); 
     digitalWrite(LED_PIN, LOW); 
@@ -48,7 +48,7 @@ void ledSOS(){
   }
   delay(1500);
   i = 0;
-  for (i=0; i<3; i++){            // letter S, made by 3 dots
+  for (i=0; i<3; i++){                // letter S, made by 3 dots
     digitalWrite(LED_PIN, HIGH); 
     delay(250); 
     digitalWrite(LED_PIN, LOW); 
