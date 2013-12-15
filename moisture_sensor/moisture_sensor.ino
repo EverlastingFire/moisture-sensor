@@ -62,9 +62,9 @@ void loop()
   led_state = digitalRead(LED_PIN);   // get the current LED state
   
   if (reading<=threshold){            // if the recorded value is below 800
-    void ledSos();                    // launch the SOS light message
+    ledSOS();                         // launch the SOS light message
     Serial.println(message);          // print the message to the monitor
-    void ledSos();                    // re-launch the SOS light message
+    ledSOS();                         // re-launch the SOS light message
     delay(interval_1m);               // wait 1 minute
   }
   else{                               // if the plant soil is moist wait a bit
