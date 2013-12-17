@@ -9,13 +9,12 @@
 
 static int SENSOR_PIN = A0;           // sensor pin number
 static int LED_PIN = 13;              // LED pin number
-static int threshold = 800;           // threshold for activating the LED
+static int TRESHOLD = 800;           // threshold for activating the LED
 
 static long SPEED=9600;               // speed of serial data's transmission
-static long interval=300000;          // interval of 5 minutes in milliseconds
+static long INTERVAL=500;          // interval in milliseconds
 
-static char message[]="Feed me!";     // message to print on the monitor
-/*static char message2[]="You can change the threshold. The current value is: ";*/
+static char MESSAGE[]="Feed me!";     // message to print on the monitor
 
 int reading;                          // analog sensor reading
 int led_state;                        // current led state
@@ -32,14 +31,12 @@ void loop()
   reading = analogRead(SENSOR_PIN);   // get the sensor reading 
   led_state = digitalRead(LED_PIN);   // get the current LED state
   
-  while (reading<=threshold){         // until the recorded value is below 800
+  if (reading<=TRESHOLD){            // check if the read value is below the treshold
     digitalWrite(LED_PIN, HIGH);      // turn on the LED
-    Serial.println(message);          // print the message to the monitor
-    delay(interval);                  // wait for 5 minutes
+    Serial.println(MESSAGE);          // print the message to the monitor
+    delay(INTERVAL);                  // wait for blink
     digitalWrite(LED_PIN, LOW);       // turn off the LED
-    reading = analogRead(SENSOR_PIN); // get the sensor reading another time
+    delay(INTERVAL);                  // wait for recheck
   }
-  
-  /* TODO: allow the user changing the threshold value*/
   
 }
